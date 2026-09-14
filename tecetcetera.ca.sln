@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.37530.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2CC1F0E-5FBD-41AB-85A5-7AFF7C073FFB}"
+	ProjectSection(SolutionItems) = preProject
+		contact-en.html = contact-en.html
+		contact.html = contact.html
+		experience-en.html = experience-en.html
+		experience.html = experience.html
+		expertise-en.html = expertise-en.html
+		expertise.html = expertise.html
+		index-en.html = index-en.html
+		index.html = index.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{178155FA-785F-4B04-90B0-619DD37D6CCD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{A3815964-EBA3-4F3E-B4DB-EE7437AEE56F}"
+	ProjectSection(SolutionItems) = preProject
+		css\style.css = css\style.css
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{178155FA-785F-4B04-90B0-619DD37D6CCD} = {C2CC1F0E-5FBD-41AB-85A5-7AFF7C073FFB}
+		{A3815964-EBA3-4F3E-B4DB-EE7437AEE56F} = {C2CC1F0E-5FBD-41AB-85A5-7AFF7C073FFB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F468D64C-EA46-49D0-84B8-63050C8A858A}
+	EndGlobalSection
+EndGlobal
