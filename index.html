@@ -1,58 +1,313 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tec Etcetera – Consultant SQL Server & ERP</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f141c;
+            --surface-color: #18202e;
+            --surface-hover: #1f2a3c;
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.15);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(148, 163, 184, 0.1);
+            --accent-gold: #fbbf24;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header moderne */
+        header {
+            background: linear-gradient(135deg, #131b2d 0%, #0f141c 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2.5rem 1.5rem 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .top-bar {
+            max-width: 1100px;
+            margin: 0 auto 2rem auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .lang-menu {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .lang-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .lang-menu a:hover, .lang-menu a.active {
+            color: var(--primary);
+        }
+
+        .lang-menu span {
+            color: var(--border-color);
+            margin: 0 0.3rem;
+        }
+
+        .logo-container {
+            margin-bottom: 1.5rem;
+        }
+
+        header img {
+            max-height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        /* Navigation principale */
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .main-nav a {
+            color: var(--text-muted);
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+        }
+
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--text-main);
+            background-color: var(--surface-hover);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        /* Contenu principal */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            width: 100%;
+            flex: 1;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Grille de services moderne */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-gold));
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .service:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service:hover::before {
+            opacity: 1;
+        }
+
+        .service h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .service p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Section clients & réalisations */
+        .clients-card {
+            background: linear-gradient(135deg, var(--surface-color) 0%, rgba(24, 32, 46, 0.5) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .clients-card p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b0e14;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 1rem;
+            }
+            .container {
+                padding: 2.5rem 1rem;
+            }
+            .service {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <header>
-        <nav class="lang-menu">
-            <a href="index.html">FR</a> |
-            <a href="index-en.html">EN</a>
-        </nav>
+        <div class="top-bar">
+            <nav class="lang-menu">
+                <a href="index.html" class="active">FR</a>
+                <span>/</span>
+                <a href="index-en.html">EN</a>
+            </nav>
+        </div>
 
-        <img src="images/logo-tecetcetera.png" alt="Tec Etcetera Logo">
+        <div class="logo-container">
+            <img src="images/logo-tecetcetera.png" alt="Tec Etcetera Logo">
+        </div>
+        
         <h1>Consultant SQL Server & ERP</h1>
         <p>25 ans d’expertise en optimisation, intégration et transformation numérique</p>
 
-        <nav>
-            <a href="index.html">Accueil</a>
+        <nav class="main-nav">
+            <a href="index.html" class="active">Accueil</a>
             <a href="expertise.html">Expertise</a>
             <a href="experience.html">Expérience</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-
-    <div class="section">
-        <h2>Services</h2>
-        <div class="services">
-            <div class="service">
-                <h3>SQL Server</h3>
-                <p>Analyse & Ingénierie des données : Concevoir et déployer des solutions de données inter-entreprises, des tableaux de bord et des modèles de reporting avec Power BI, Power Query et SSRS pour obtenir des insights business.  Performance tuning, indexation, SSRS, SSIS, migrations, architecture.</p>
-            </div>
-            <div class="service">
-                <h3>ERP & Intégration</h3>
-                <p>Leadership technique : Servir de principal analyste technique pour un client majeur regroupant plusieurs entreprises en Amérique du Nord, en dirigeant le développement ERP personnalisé, les rapports SSRS et les mises à jour de systèmes multi-versions. Spécialiste ERP:  Epicor, Momentis, NuOrder API, Genius ERP, PLM, WMS, EDI.</p>
-            </div>
-            <div class="service">
-                <h3>Développement</h3>
-                <p>.NET, C#, Angular, Python, PHP, PowerShell, Bash, JavaScript, vbScript, automatisations, etc.</p>
-            </div>
-            <div class="service">
-                <h3>IA appliquée au développement.</h3>
-                <p>Développement assisté par l'IA : Utiliser des plateformes IA avancées (Claude AI, Claude Cowork et Claude Code) pour accélérer les cycles de développement logiciel, optimiser la qualité du code et automatiser la documentation système.</p>
+    <div class="container">
+        <div class="section">
+            <h2>Services</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>SQL Server</h3>
+                    <p>Analyse & Ingénierie des données : Concevoir et déployer des solutions de données inter-entreprises, des tableaux de bord et des modèles de reporting avec Power BI, Power Query et SSRS pour obtenir des insights business. Performance tuning, indexation, SSRS, SSIS, migrations, architecture.</p>
+                </div>
+                <div class="service">
+                    <h3>ERP & Intégration</h3>
+                    <p>Leadership technique : Servir de principal analyste technique pour un client majeur regroupant plusieurs entreprises en Amérique du Nord, en dirigeant le développement ERP personnalisé, les rapports SSRS et les mises à jour de systèmes multi-versions. Spécialiste ERP : Epicor, Momentis, NuOrder API, Genius ERP, PLM, WMS, EDI.</p>
+                </div>
+                <div class="service">
+                    <h3>Développement</h3>
+                    <p>.NET, C#, Angular, Python, PHP, PowerShell, Bash, JavaScript, vbScript, automatisations, etc.</p>
+                </div>
+                <div class="service">
+                    <h3>IA appliquée au développement</h3>
+                    <p>Développement assisté par l'IA : Utiliser des plateformes IA avancées (Claude AI, Claude Cowork et Claude Code) pour accélérer les cycles de développement logiciel, optimiser la qualité du code et automatiser la documentation système.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>Clients & Réalisations</h2>
-        <p>Telio, Modextil, Matt & Nat, Rand Accessories, Dex Clothing, Moose Knuckles, Bell Canada, Laura, Tribal Sportswear, Tecsys…</p>
-    </div>
+        <div class="section">
+            <h2>Clients & Réalisations</h2>
+            <div class="clients-card">
+                <p>Telio, Modextil, Matt & Nat, Rand Accessories, Dex Clothing, Moose Knuckles, Bell Canada, Laura, Tribal Sportswear, Tecsys…</p>
+            </div>
 
     <footer>
         © 2026 Tec Etcetera – Consulting & Technology
